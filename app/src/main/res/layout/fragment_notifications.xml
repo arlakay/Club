@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="55dp"
+        android:layout_below="@+id/lbl_notification">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="The Glenlivet 15 750cl - 2 that you
+kept at Sun City Luxury Club, Jakarta
+will be expired on Aug 25, 2016.
+Please visit the respective venue to
+claim your bottle"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:drawableLeft="@drawable/ic_info_outline"
+                android:drawablePadding="@dimen/activity_horizontal_margin"
+                android:drawableTintMode="src_in"
+                android:drawableTint="#406ab4"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:background="#cccccc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="We have added new items for you to
+redeem your points. please check my
+points section for more information"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:drawableLeft="@drawable/ic_info_outline"
+                android:drawablePadding="@dimen/activity_horizontal_margin"
+                android:drawableTintMode="src_in"
+                android:drawableTint="#406ab4" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:background="#cccccc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="You have successfully redeemed1000
+points for a free bottle of chivas regal
+12. You currently have 35 points left. "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:drawableLeft="@drawable/ic_info_outline"
+                android:drawablePadding="@dimen/activity_horizontal_margin"
+                android:drawableTintMode="src_in"
+                android:drawableTint="#406ab4"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:background="#cccccc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="We have added new items for you to
+redeem your points. please check my
+points section for more information"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:drawableLeft="@drawable/ic_info_outline"
+                android:drawablePadding="@dimen/activity_horizontal_margin"
+                android:drawableTintMode="src_in"
+                android:drawableTint="#406ab4"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/lbl_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="NOTIFICATIONS"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

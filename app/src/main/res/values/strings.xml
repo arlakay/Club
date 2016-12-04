@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">My Drinks Club</string>
+
+    <string name="menu_1">Home</string>
+    <string name="menu_2">Sale</string>
+    <string name="menu_3">Store</string>
+    <string name="menu_4">Notifications</string>
+
+    <string name="prompt_password">Password</string>
+
+    <string name="turn_on_flashlight">Turn on Flashlight</string>
+    <string name="turn_off_flashlight">Turn off Flashlight</string>
+</resources>
