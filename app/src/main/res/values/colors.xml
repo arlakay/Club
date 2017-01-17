@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#262E4B</color>
-    <color name="colorPrimaryDark">#262E4B</color>
+    <color name="colorPrimaryDark">#1A237E</color>
     <color name="colorAccent">#FF4081</color>
 
     <color name="main_colorPrimary">#FFFFFF</color>
@@ -12,6 +12,7 @@
     <color name="dongker">#1A237E</color>
     <color name="white">#ffffff</color>
     <color name="text">#808080</color>
+    <color name="green500">#4CAF50</color>
 
     <array name="tab_colors">
         <item name="tab_1">#455C65</item>

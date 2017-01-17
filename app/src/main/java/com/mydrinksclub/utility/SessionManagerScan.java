@@ -83,6 +83,11 @@ public class SessionManagerScan {
         editor.commit();
     }
 
+    public void clearBottleBarcode(){
+        editor.remove(KEY_BOTTLE_BARCODE);
+        editor.commit();
+    }
+
     public boolean isLoggedIn(){
         return pref.getBoolean(KEY_IS_LOGGEDIN, false);
     }

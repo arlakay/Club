@@ -19,6 +19,9 @@
 
     </style>
 
-
+    <style name="AppTheme.BrandedLaunch" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="colorPrimaryDark">#000000</item>
+    </style>
 
 </resources>

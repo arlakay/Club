@@ -7,12 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="56dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
+            android:gravity="center_horizontal"
             android:text="STORE BOTTLE\nSUCCESS"
             android:textStyle="bold"
             android:textAlignment="center"
@@ -60,6 +62,7 @@
                         android:gravity="center_vertical">
 
                         <TextView
+                            android:id="@+id/txt_username"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Missbelismo" />
@@ -95,6 +98,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/txt_brand"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Absolut Vodka"/>
@@ -130,6 +134,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/txt_rack"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="53"/>
@@ -166,9 +171,82 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/txt_volume_store_confirm"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="100%"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Current Date :"  />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_current_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="date"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Purchase Date :"  />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_purchase_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="-"/>
 
                     </LinearLayout>
 
@@ -201,9 +279,10 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/txt_keep_end_date"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Oct 30, 2016"/>
+                            android:text="-"/>
 
                     </LinearLayout>
 
@@ -239,7 +318,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Bottle is cracked"
-                            android:id="@+id/textView4" />
+                            android:id="@+id/txt_bottleNote" />
 
                     </LinearLayout>
 
@@ -256,7 +335,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_margin="@dimen/activity_vertical_margin"
                         android:background="@drawable/button_rounded"
                         android:layout_gravity="center_horizontal"
                         android:text="NEXT"
@@ -267,7 +346,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_margin="@dimen/activity_vertical_margin"
                         android:background="@drawable/button_rounded"
                         android:layout_gravity="center_horizontal"
                         android:text="FINISH"

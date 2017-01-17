@@ -9,13 +9,14 @@
         android:id="@+id/layout_store_atas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
-            android:text="STORE"
+            android:text="BOTTLE KEEPING"
             android:textStyle="bold"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
@@ -43,10 +44,32 @@
                     android:padding="@dimen/activity_horizontal_margin"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Scan Bottle QR Code"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Scan Bottle QR Code"/>
+
+                        <ImageView
+                            android:id="@+id/img_bottleqr_keep_valid"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_valid"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/img_bottleqr_keep_wrong"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_wrong"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -58,7 +81,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Bottle QR Code"
-                            android:layout_weight="0.1"/>
+                            android:singleLine="true"
+                            android:layout_weight="0.1"
+                            android:imeOptions="actionDone"/>
                         <ImageButton
                             android:id="@+id/btn_store_scan_bottle_qrcode"
                             android:layout_width="match_parent"

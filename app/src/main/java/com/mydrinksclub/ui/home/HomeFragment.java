@@ -1,6 +1,5 @@
 package com.mydrinksclub.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,9 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.mydrinksclub.R;
-import com.mydrinksclub.ui.login.LoginActivity;
 import com.mydrinksclub.ui.sale.SaleFragment;
 import com.mydrinksclub.ui.store.StoreFragment;
+import com.mydrinksclub.utility.SessionManagerLogin;
+import com.mydrinksclub.utility.SessionManagerScan;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,17 +20,24 @@ import butterknife.OnClick;
 public class HomeFragment extends Fragment {
 	@BindView(R.id.btn_home_logout)ImageView btnLogout;
 	private static final String TAG = "HomeFragment";
+	private SessionManagerLogin sessionManagerLogin;
+	private SessionManagerScan smScan;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_home, container, false);
 		ButterKnife.bind(this, view);
 
+		smScan = new SessionManagerScan(getActivity().getApplicationContext());
+		sessionManagerLogin = new SessionManagerLogin(getActivity().getApplicationContext());
+
 		return view;
 	}
 
 	@OnClick(R.id.btn_home_sale)
 	public void viewSale(View view) {
+		smScan.clearScan();
+
 		SaleFragment saleFragment = new SaleFragment();
 		Bundle arguments = new Bundle();
 //		arguments.putString("phone", phoneStore);
@@ -57,9 +64,11 @@ public class HomeFragment extends Fragment {
 
 	@OnClick(R.id.btn_home_logout)
 	public void logout(View view) {
-		Intent i = new Intent(getActivity(), LoginActivity.class);
-		startActivity(i);
-		getActivity().finish();
+		if (sessionManagerLogin.isLoggedIn()) {
+			sessionManagerLogin.setLogin(false);
+			sessionManagerLogin.logoutUser();
+
+		}
 	}
 
 }

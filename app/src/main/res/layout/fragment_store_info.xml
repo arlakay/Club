@@ -9,13 +9,14 @@
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:text="STORE BOTTLE"
+            android:text="BOTTLE KEEPING"
             android:textStyle="bold"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
@@ -63,6 +64,7 @@
                         android:gravity="center_vertical">
 
                         <TextView
+                            android:id="@+id/txt_username"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Missbelismo" />
@@ -78,6 +80,7 @@
                     android:orientation="vertical" >
 
                     <EditText
+                        android:id="@+id/et_bottle_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -88,16 +91,33 @@
                         android:paddingLeft="@dimen/activity_horizontal_margin"/>
 
                     <EditText
+                        android:id="@+id/et_rack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/activity_vertical_margin"
                         android:background="@drawable/textfield_style"
                         android:hint="Rack #"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:imeOptions="actionNext"
                         android:paddingLeft="@dimen/activity_horizontal_margin"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="Valid until "  />
+
+                    <Spinner
+                        android:id="@+id/spin_valid_until"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp">
+
+                    </Spinner>
+
                     <EditText
+                        android:id="@+id/et_bottle_note"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Bottle Note / Description"

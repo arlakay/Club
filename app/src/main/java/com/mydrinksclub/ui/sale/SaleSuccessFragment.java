@@ -7,11 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.mydrinksclub.R;
 import com.mydrinksclub.ui.main.MainActivity;
 import com.mydrinksclub.utility.SessionManagerScan;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -20,7 +22,11 @@ import butterknife.OnClick;
  */
 
 public class SaleSuccessFragment extends Fragment {
+    @BindView(R.id.txt_nama_user)TextView txtUser;
+    @BindView(R.id.txt_product_name)TextView txtProdukName;
+
     private SessionManagerScan smScan;
+    private String messages, namaUser, productName;
 
     @Nullable
     @Override
@@ -30,7 +36,19 @@ public class SaleSuccessFragment extends Fragment {
 
         smScan = new SessionManagerScan(getActivity().getApplicationContext());
 
+        getData();
+
+        txtUser.setText(namaUser);
+        txtProdukName.setText(productName);
+
         return view;
+    }
+
+    public void getData(){
+        messages = getArguments().getString("message");
+        namaUser = getArguments().getString("namaUser");
+        productName = getArguments().getString("productName");
+
     }
 
     @OnClick(R.id.btn_sale_close)

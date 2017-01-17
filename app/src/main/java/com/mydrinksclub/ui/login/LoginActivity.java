@@ -1,6 +1,9 @@
 package com.mydrinksclub.ui.login;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -11,23 +14,20 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
 import com.mydrinksclub.R;
+import com.mydrinksclub.api.RestApi;
+import com.mydrinksclub.api.services.ApiService;
+import com.mydrinksclub.model.LoginResponse;
 import com.mydrinksclub.ui.main.MainActivity;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.mydrinksclub.utility.SessionManagerLogin;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by E.R.D on 4/2/2016.
@@ -35,41 +35,25 @@ import butterknife.OnClick;
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.uid)EditText et_username;
     @BindView(R.id.password)EditText et_pass;
-    String URL_LOGIN = "http://192.168.0.101/api/in_mydrinks/index.php/api/user/login";
-    //RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+    private static final String TAG = LoginActivity.class.getSimpleName();
+    private SessionManagerLogin sessionManagerLogin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View view) {
-//                String username = editUserId.getText().toString();
-//                String password = editPass.getText().toString();
-//                // Check for empty data in the form
-//                if (username.trim().length() > 0 && password.trim().length() > 0) {
-//
-//                    ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-//                    NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-//
-//                    //Log.e("Problem", connMgr.toString());
-//                    if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
-////                        checkLogin(username, password);
-//                    }
-//                    else{ Toast.makeText(getApplicationContext(),
-//                            "No Internet Access Available!", Toast.LENGTH_LONG)
-//                            .show();}
-//                } else {
-//                    // Prompt user to enter credentials
-//                    Toast.makeText(getApplicationContext(),
-//                            "Please enter Phone Number and Password", Toast.LENGTH_LONG)
-//                            .show();
-//                }
-//            }
-//        });
+        sessionManagerLogin = new SessionManagerLogin(getApplicationContext());
+
+        if (sessionManagerLogin.isLoggedIn()) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
     }
 
@@ -80,67 +64,65 @@ public class LoginActivity extends AppCompatActivity {
         String password = et_pass.getText().toString();
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
-            //checkLogin(username, password);
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+            loginAuth(username, password);
         }else{
             Toast.makeText(getApplicationContext(), "No Internet Access Available!", Toast.LENGTH_LONG).show();
         }
-
     }
 
-    private void checkLogin(final String username, final String password){
-        String tag_string_req = "req_login";
-        StringRequest strReq = new StringRequest(Request.Method.POST, URL_LOGIN, new Response.Listener<String>() {
+    private void loginAuth(String uname, String pass) {
+        final ProgressDialog dialog = ProgressDialog.show(this, "", "Loading...");
+
+        ApiService apiService =
+                RestApi.getClient().create(ApiService.class);
+
+        Call<LoginResponse> call = apiService.login(uname, pass);
+        call.enqueue(new Callback<LoginResponse>() {
             @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jObj = new JSONObject(response);
-                    String username = jObj.getString("email");
-                    String password = jObj.getString("password");
+            public void onResponse(Call<LoginResponse>call, Response<LoginResponse> response) {
+                dialog.dismiss();
+
+                Log.d(TAG, "Status Code = " + response.code());
+                Log.d(TAG, "Data received: " + new Gson().toJson(response.body()));
+
+                if (response.code() == 200 && response.body().status && response.body().messages.contains("Success")) {
+                    String uid = response.body().userId;
+                    String uCode = response.body().userCode;
+                    String privilege = response.body().privilege;
+                    String fName = response.body().firstName;
+                    String lName = response.body().lastName;
+                    String email = response.body().email;
+                    String picture = response.body().picture;
+
+                    sessionManagerLogin.setLogin(true);
+                    sessionManagerLogin.createLoginSession(uid, uCode, privilege, fName, lName, email, picture);
+
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("username",username);
-                    Log.d("username = ", username);
                     startActivity(intent);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    finish();
+                } else {
+                    Intent intent = new Intent(LoginActivity.this, LoginConfirmationActivity.class);
+                    startActivity(intent);
                 }
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
-                if (error != null) { //NULL DATA GIVEN
-                    try {
-                        JSONObject errorBody = new JSONObject(new String(error.networkResponse.data));
-                        Toast.makeText(LoginActivity.this, errorBody.optString("messages"), Toast.LENGTH_SHORT).show();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+            public void onFailure(Call<LoginResponse>call, Throwable t) {
+                dialog.dismiss();
+
+                AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
+                alertDialog.setTitle("Error");
+                alertDialog.setMessage("The connection has timed out\n" +
+                        "The server is taking too long to respond.");
+                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
                     }
-//                    if (error.toString().equals("com.android.volley.ServerError")){
-//                        Toast.makeText(getApplicationContext(), "Username and Password did not match", Toast.LENGTH_LONG).show();
-//                    } else{
-//                        error.printStackTrace();
-//                        Toast.makeText(getApplicationContext(), "Please try again later\n"+error.getMessage(), Toast.LENGTH_LONG).show();
-//                    }
+                });
+                alertDialog.show();
 
-                }else{ //DATA GIVEN
-                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                }
             }
-        }
-
-        ) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError { // isikan parameter2 nya disini
-                HashMap<String, String> params = new HashMap<>();
-                params.put("username-or-email", username);
-                params.put("password", password);
-                return params;
-            }
-        };
-//        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
-        //requestQueue.add(strReq);
+        });
     }
+
 }

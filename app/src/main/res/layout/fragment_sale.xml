@@ -9,20 +9,22 @@
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
-            android:text="SALE"
+            android:text="PURCHASE"
             android:textStyle="bold"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="56dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,10 +39,32 @@
                     android:paddingRight="@dimen/activity_horizontal_margin"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Scan Customer QR Code"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Scan Customer QR Code"/>
+
+                        <ImageView
+                            android:id="@+id/img_customer_valid"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_valid"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/img_customer_wrong"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_wrong"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -52,6 +76,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Customer QR Code"
+                            android:singleLine="true"
                             android:layout_weight="0.1"/>
                         <ImageButton
                             android:id="@+id/btn_sale_customer_qrcode"
@@ -73,10 +98,32 @@
                     android:paddingRight="@dimen/activity_horizontal_margin"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Scan Bottle QR Code"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Scan Bottle QR Code"/>
+
+                        <ImageView
+                            android:id="@+id/img_bottleqr_valid"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_valid"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/img_bottleqr_wrong"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_wrong"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -88,6 +135,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Bottle QR Code"
+                            android:singleLine="true"
                             android:layout_weight="0.1"/>
                         <ImageButton
                             android:id="@+id/btn_sale_bottle_qrcode"
@@ -109,10 +157,32 @@
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Scan Bottle Barcode"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Scan Bottle Barcode"/>
+
+                        <ImageView
+                            android:id="@+id/img_bottlebarcode_valid"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_valid"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/img_bottlebarcode_wrong"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_wrong"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -124,7 +194,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Bottle Barcode"
-                            android:layout_weight="0.1"/>
+                            android:singleLine="true"
+                            android:inputType="number"
+                            android:layout_weight="0.1" />
+
                         <ImageButton
                             android:id="@+id/btn_sale_bottle_barcode"
                             android:layout_width="match_parent"
@@ -133,6 +206,61 @@
                             android:src="@drawable/ic_qr_scanner"
                             android:background="@null"
                             android:scaleType="centerInside"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_spinner_bottle_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bottle Name"/>
+
+                        <ImageView
+                            android:id="@+id/img_bottlename_valid"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_valid"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/img_bottlename_wrong"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_wrong"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:weightSum="1">
+
+                        <Spinner
+                            android:id="@+id/spin_bottle_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:spinnerMode="dialog"
+                            android:layout_weight="0.1">
+                        </Spinner>
+
                     </LinearLayout>
 
                 </LinearLayout>

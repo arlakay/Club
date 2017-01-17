@@ -1,13 +1,139 @@
 <resources>
-    <string name="app_name">My Drinks Club</string>
+    <string name="app_name">Luxe-Storage Club</string>
 
     <string name="menu_1">Home</string>
-    <string name="menu_2">Sale</string>
-    <string name="menu_3">Store</string>
+    <string name="menu_2">Purchase</string>
+    <string name="menu_3">Bottle Keeping</string>
     <string name="menu_4">Notifications</string>
 
     <string name="prompt_password">Password</string>
 
     <string name="turn_on_flashlight">Turn on Flashlight</string>
     <string name="turn_off_flashlight">Turn off Flashlight</string>
+    <string name="settings">Settings</string>
+
+    <string-array name="valid_until">
+        <item>1 Month</item>
+        <item>2 Month</item>
+        <item>3 Month</item>
+    </string-array>
+
+    <string-array name="bottle_name">
+        <item>- Default -</item>
+        <item>-- Not Listed --</item>
+
+        <item>Absolut Citron</item>
+        <item>Absolut ELYX</item>
+        <item>Absolut Kurant</item>
+        <item>Absolut Mandrin</item>
+        <item>Absolut Pears</item>
+        <item>Absolut Raspberri</item>
+        <item>Absolut Vanilia</item>
+        <item>Absolut Vodka</item>
+        <item>Avion Tequila</item>
+        <item>"Ballantine's 12 years old whisky"</item>
+        <item>"Ballantine's 17 years old whisky"</item>
+        <item>"Ballantine's 21 years old whisky"</item>
+        <item>"Ballantine's 30 years old whisky"</item>
+        <item>"Ballantine's Finest"</item>
+        <item>Beefeater Gin</item>
+        <item>Chivas 12 years old whisky</item>
+        <item>Chivas 18 years old whisky</item>
+        <item>Chivas 25 years old whisky</item>
+        <item>Havana Club Rum</item>
+        <item>Imperial whisky</item>
+        <item>Jameson Irish whiskey</item>
+        <item>Kahlua liqueur</item>
+        <item>Malibu Caribbean Rum with coconut flavour</item>
+        <item>Martell Chanteloup</item>
+        <item>Martell Cohiba Cognac</item>
+        <item>Martell Cordon Bleu</item>
+        <item>Martell VSOP</item>
+        <item>Martell XO</item>
+        <item>Monkey 47 Gin</item>
+        <item>Olmeca Tequila Reposado</item>
+        <item>Pernod Aperitif</item>
+        <item>Plymouth Gin</item>
+        <item>Ricard Aperitif</item>
+        <item>Royal Salute 21 years old whisky</item>
+        <item>Seagrams Gin</item>
+        <item>The Glenlivet 12 years old single malt whisky</item>
+        <item>The Glenlivet 15 years old single malt whisky</item>
+        <item>The Glenlivet 18 years old single malt whisky</item>
+        <item>The Glenlivet 21 years old single malt whisky</item>
+        <item>The Glenlivet 25 years old single malt whisky</item>
+        <item>Wyborowa Vodka</item>
+
+        <!--<item>-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</item>-->
+        <item>-------------------------------------</item>
+
+        <item>Bacardi Limon Citrus Rum</item>
+        <item>Baileys Original Frish Cream</item>
+        <item>Belvedere Vodka</item>
+        <item>Bombay Sapphire Gin</item>
+        <item>Bowmore Islay 12</item>
+        <item>Brugal ESPECIAL EXTRA DRY RUM</item>
+        <item>Brugal Rum ENEJO Superior</item>
+        <item>Captain Morgan Original Spiced Gold</item>
+        <item>Chambord Black Raspberry</item>
+        <item>Ciroc Vodka</item>
+        <item>Cointreau</item>
+        <item>Courvoisier VSOP Cognac</item>
+        <item>Courvoisier XO Cognac</item>
+        <item>DonJulio ANEJO</item>
+        <item>Glenfiddich 12 years old</item>
+        <item>Glenfiddich 15 years old</item>
+        <item>Glenfiddich 18 years old</item>
+        <item>Glenmorangie</item>
+        <item>Grand Marnier LIQUEUR ORANGE &amp; COGNAC</item>
+        <item>Grey Goose Vodka</item>
+        <item>Hendricks Gin</item>
+        <item>Hennessy VSOP Cognac</item>
+        <item>Hennessy XO Cognac</item>
+        <item>Hibiki 12</item>
+        <item>Hibiki 17</item>
+        <item>Highland Park 12</item>
+        <item>Highland Park 18</item>
+        <item>"Jack Daniel's Old No.7 Tennessee"</item>
+        <item>"Jack Daniel's Single Barrel"</item>
+        <item>Jim Beam Black Triple Aged 6 years</item>
+        <item>Jim Beam Bourbon</item>
+        <item>Johnnie Walker Black Label</item>
+        <item>Johnnie Walker Blue label</item>
+        <item>Johnnie Walker Double Black</item>
+        <item>Johnnie Walker Gold Reserve</item>
+        <item>Johnnie Walker Platinum 18 years</item>
+        <item>Johnnie Walker Red Label</item>
+        <item>Johnnie Walker XR 21 years</item>
+        <item>Ketel One Vodka</item>
+        <item>Laphroaig Islay 10 single malt scotch whisky </item>
+        <item>Macallan 12 years old</item>
+        <item>Macallan 12 years old – special wood</item>
+        <item>Macallan 18 years old</item>
+        <item>Macallan 21 years old</item>
+        <item>Makers Mark S IV Bourbon Whisky</item>
+        <item>Martini Bianco</item>
+        <item>Martini Extra Dry</item>
+        <item>Martini Rosso</item>
+        <item>Monkey Shoulder smooth and rise</item>
+        <item>Mount Gay Barbados Rum</item>
+        <item>"Myers's Rum Original Dark"</item>
+        <item>Remy Martin VSOP Cognac</item>
+        <item>Remy Martin XO Cognac</item>
+        <item>Ron Zacapa 23</item>
+        <item>ST-REMY Authentic VSOP</item>
+        <item>Tanqueray Gin</item>
+        <item>Tanqueray No. 10 Gin</item>
+        <item>The Singleton 12 single mat scoth whiskey</item>
+        <item>The Singleton 18 single mat scoth whiskey</item>
+        <item>The Yamazaki 12 Years old</item>
+
+    </string-array>
+
+
+    <string-array name="store_code">
+        <item>SKYE Bar &amp; Restaurant</item>
+        <item>Sun City Luxury Club</item>
+    </string-array>
+
 </resources>

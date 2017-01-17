@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class ScanBottleBarcode extends Fragment {
         if(result != null) {
             if(result.getContents() == null) {
                 Toast.makeText(getActivity(), "Cancelled from fragment", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
                 SaleFragment saleFragment = new SaleFragment();
                 Bundle arguments = new Bundle();
@@ -53,7 +55,6 @@ public class ScanBottleBarcode extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.activityslidein, R.anim.activityslideinout, R.anim.activityslideoutpop, R.anim.activityslideout)
                         .replace(R.id.root_frame, saleFragment, "saleFragment")
-                        .addToBackStack("saleFragment")
                         .commit();
             } else {
                 Toast.makeText(getActivity(), "Scanned from fragment: " + result.getContents(), Toast.LENGTH_SHORT).show();
